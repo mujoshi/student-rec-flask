@@ -22,8 +22,14 @@ def login_required(f):
 
     return wrap
 
+@studentr.route('/logout/')
 
-
+@login_required
+def logout():
+    session.clear()
+    flash("You have been logged out!")
+    
+    return redirect(url_for('login'))
 
 
 
@@ -36,8 +42,7 @@ def login():
         row = cur.execute('select * from users where username = ?',(request.form['username'],))
         
         data = row.fetchone()[2]
-        if data == None:
-            flash('you must fill your password')
+        
         
         if sha256_crypt.verify(request.form['password'],data):
             session['logged_in'] = True
