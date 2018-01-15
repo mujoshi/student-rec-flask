@@ -1,0 +1,63 @@
+<html xmlns="http://www.w3.org/1999/html">
+<HEAD>
+ <TITLE> Student details </TITLE>
+ <link rel="stylesheet" href="{{ url_for('static', filename='style/main.css') }}">
+</HEAD>
+<div class="school">
+ <BODY>
+
+
+
+ <div class="topnav">
+  <a class="active" href="/addrec">Home</a>
+  <a href="/list">Views</a>
+  <a href="/delete">Delete</a>
+  <a href="/search">Search</a>
+
+</div>
+
+
+
+
+ <div align="center" class="form-group">
+
+     <p ><h1>Don't Have user-id , Register Yourself here!</h1></p>
+ <fieldset>
+<form action="/registor" class="form-inline" method="post">
+			<input type="text" class="form-control" placeholder = "Username" name="username" value="{{request.form.username}}">
+			<input type="password" class="form-control" placeholder = "Password" name="password" value="{{request.form.password}}">
+			<input class="btn btn-default" type="submit" value="submit">
+		</form>
+ </fieldset>
+
+
+</div>
+
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+
+        {% for message in messages %}
+            {% if "Error" not in message[1]: %}
+                <div class="alert alert-info">
+                <strong>Success! </strong> {{ message[1] }}
+                </div>
+            {% endif %}
+
+            {% if "Error" in message[1]: %}
+                <div class="alert alert-warning">
+                {{ message[1] }}
+                </div>
+            {% endif %}
+
+        {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+
+ </BODY>
+</div>
+ </HTML>

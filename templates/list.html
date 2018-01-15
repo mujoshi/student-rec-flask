@@ -1,0 +1,52 @@
+<html>
+
+<HEAD>
+ <TITLE> Student details </TITLE>
+ <link rel="stylesheet" href="{{ url_for('static', filename='style/main.css') }}">
+</HEAD>
+
+<div class="school">
+ <BODY>
+ <div class="topnav">
+  <a class="active" href="/addrec">Home</a>
+  <a href="/list">Views</a>
+  <a href="/delete">Delete</a>
+  <a href="/search">Search</a>
+  <a href="/logout">Logout</a>
+</div>
+<div align='center'>
+<h1>STUDENT RECORD</h1>
+<table id="customers">
+
+            <th>Student-Id</th>
+
+
+            <th>First name</th>
+
+            <th>Last Name</th>
+
+            </thead>
+
+            {% for data in row %}
+            <tr>
+                <td>{{data['stid']}}</td>
+
+                <td>{{data['fname']}}</td>
+                <td>{{data['lname']}}</td>
+            </tr>
+
+            {% endfor %}
+        </table>
+
+</div>
+
+
+
+
+
+
+
+</body>
+
+</div>
+</html>

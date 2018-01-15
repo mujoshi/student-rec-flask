@@ -1,0 +1,57 @@
+<html>
+<HEAD>
+ <TITLE> Student details </TITLE>
+ <link rel="stylesheet" href="{{ url_for('static', filename='style/main.css') }}">
+</HEAD>
+
+<div class="school">
+ <BODY>
+ <div class="topnav">
+  <a class="active" href="/addrec">Home</a>
+  <a href="/list">Views</a>
+  <a href="/delete">Delete</a>
+  <a href="/search">Search</a>
+  <a href="/logout">Logout</a>
+</div>
+
+
+ <form method="post" action="/delete">
+
+ <div align="center" class="form-group">
+ <p>Input Student Id to Delete!</p>
+ <p>
+      Student Id : <input type="text" name="studentid">
+ </p>
+
+
+ <INPUT TYPE="submit">
+</div>
+
+ </form>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+
+        {% for message in messages %}
+            {% if "Error" not in message[1]: %}
+                <div class="alert alert-info">
+                <strong>Success! </strong> {{ message[1] }}
+                </div>
+            {% endif %}
+
+            {% if "Error" in message[1]: %}
+                <div class="alert alert-warning">
+                {{ message[1] }}
+                </div>
+            {% endif %}
+
+        {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+
+ </BODY>
+</div>
+ </HTML>

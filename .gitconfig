@@ -1,0 +1,11 @@
+[gui]
+	recentrepo = C:/Users/mujoshi/Desktop/studentr
+[user]
+	name = mujoshi
+[user]
+	email = mujoshi@expedia.com
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

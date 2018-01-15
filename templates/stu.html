@@ -1,0 +1,71 @@
+<html xmlns="http://www.w3.org/1999/html">
+<HEAD>
+ <TITLE> Student details </TITLE>
+ <link rel="stylesheet" href="{{ url_for('static', filename='style/main.css') }}">
+</HEAD>
+<div class="school">
+ <BODY>
+
+
+
+ <div class="topnav">
+     <a class="active" href="/addrec">Home</a>
+     <a href="/list">Views</a>
+     <a href="/delete">Delete</a>
+     <a href="/search">Search</a>
+     <a href="/logout">Logout</a>
+
+</div>
+
+
+
+ <form method="post" action="/addrec">
+     {{ form.csrf_token }}
+ <div align="center" class="form-group">
+
+     <p ><h1>Add Student details Here!</h1></p>
+ <fieldset>
+
+          {{ form.stid.label }}
+          {{ form.stid }}
+
+
+          {{ form.fname.label }}
+          {{ form.fname }}
+
+          {{ form.lname.label }}
+          {{ form.lname }}
+ </fieldset>
+
+
+ <INPUT TYPE="submit">
+</div>
+
+ </form>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+
+        {% for message in messages %}
+            {% if "Error" not in message[1]: %}
+                <div class="alert alert-info">
+                <strong>Success! </strong> {{ message[1] }}
+                </div>
+            {% endif %}
+
+            {% if "Error" in message[1]: %}
+                <div class="alert alert-warning">
+                {{ message[1] }}
+                </div>
+            {% endif %}
+
+        {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+
+ </BODY>
+</div>
+ </HTML>
